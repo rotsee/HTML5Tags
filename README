@@ -1,0 +1,6 @@
+HTML5Tags
+=========
+
+Allows a couple of HTML5 tags such as figure/figcaption in MediaWiki
+
+This is useful as long as https://bugzilla.wikimedia.org/show_bug.cgi?id=23932 is not resolved.
