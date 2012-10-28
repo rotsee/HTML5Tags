@@ -27,7 +27,7 @@ class HTML5Tags {
 
 	}
 
-	/* This function takes all attributes that are common among HTML5 attributes,
+	/* This function takes all attributes that are allowed fot all HTML5 tags,
 	    removes them from args and returns them */
 	private function extractGlobalAttributes ( &$args ) {
 
@@ -63,85 +63,52 @@ class HTML5Tags {
 
 	}
 
+	/* Shorthand function for the simplest possible tag function */
+	private function html ( $tag, $input, $args, $parser, $frame ) {
+		$args = self::extractGlobalAttributes( $args );
+		$start = self::createOpeningTag( $tag, $args );
+		$input = $parser->recursiveTagParse ( $input, $frame ); //This does not run Parser::preSaveTransform
+		return "$start$input</$tag>";
+	}
 
 	public function tagArticle ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'article', $args );
-		return "$start$input</article>";
-
+		return self::html( 'article', $input, $args, $parser, $frame);
 	}
 
 	public function tagAside ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'aside', $args );
-		return "$start$input</aside>";
-
+		return self::html( 'aside', $input, $args, $parser, $frame);
 	}
 
 	public function tagFigcaption ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'figcaption', $args );
-		return "$start$input</figcaption>";
-
+		return self::html( 'figcaption', $input, $args, $parser, $frame);
 	}
 
 	public function tagFigure ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'figcaption', $args );
-		return "$start$input</figcaption>";
-
+		return self::html( 'figure', $input, $args, $parser, $frame);
 	}
 
 	public function tagFooter ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'footer', $args );
-		return "$start$input</footer>";
-
+		return self::html( 'footer', $input, $args, $parser, $frame);
 	}
 
 	public function tagHeader ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'header', $args );
-		return "$start$input</header>";
-
+		return self::html( 'header', $input, $args, $parser, $frame);
 	}
 
 	public function tagHgroup ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'hgroup', $args );
-		return "$start$input</hgroup>";
-
+		return self::html( 'hgroup', $input, $args, $parser, $frame);
 	}
 
 	public function tagMark ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'mark', $args );
-		return "$start$input</mark>";
-
+		return self::html( 'mark', $input, $args, $parser, $frame);
 	}
 
 	public function tagNav ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'nav', $args );
-		return "$start$input</nav>";
-
+		return self::html( 'nav', $input, $args, $parser, $frame);
 	}
 
 	public function tagSection ( $input, $args, $parser, $frame ) {
-
-		$args = self::extractGlobalAttributes( $args );
-		$start = self::createOpeningTag( 'section', $args );
-		return "$start$input</section>";
-
+		return self::html( 'section', $input, $args, $parser, $frame);
 	}
 
 	public function tagTime ( $input, $args, $parser, $frame ) {
@@ -153,6 +120,8 @@ class HTML5Tags {
 			}
 		}
 		$start = self::createOpeningTag( 'time', $finalArgs );
+		$input = $parser->recursivePreprocess ( $input, $frame );
+		$input = $parser->recursiveTagParse ( $input, $frame );
 		return "$start$input</time>";
 
 	}
