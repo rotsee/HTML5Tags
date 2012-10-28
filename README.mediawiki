@@ -1,0 +1,23 @@
+Allows a couple of HTML5 tags such as figure/figcaption in MediaWiki
+
+This is useful as long as https://bugzilla.wikimedia.org/show_bug.cgi?id=23932 is not resolved.
+
+==Release ==
+[https://github.com/rotsee/HTML5Tags/tags 0.1]
+
+==Dependencies==
+MediaWiki 1.18
+
+==Installation==
+Add the following settings to your LocalSettings.php:
+require_once("$IP/extensions/HTML5Tags/HTML5Tags.php");
+
+==Changelog==
+*0.1 First version
+
+== License ==
+BSD 
+
+== Disclaimer ==
+The source code is provided as-is, without warranty and does not warrant or endorse and does not assume and will not have any liability or responsibility for any damage or loss.
+__NOTOC__
