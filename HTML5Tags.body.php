@@ -11,6 +11,7 @@ class HTML5Tags {
 	    TODO: Should probably check for each and everyone that they are not already set */
 	public function setHooks ( $parser ) {
 		$parser->setHook( 'article', array( 'HTML5Tags', 'tagArticle' ) );
+		$parser->setHook( 'aside', array( 'HTML5Tags', 'tagAside' ) );
 		$parser->setHook( 'figure', array( 'HTML5Tags', 'tagFigure' ) );
 		$parser->setHook( 'figcaption', array( 'HTML5Tags', 'tagFigcaption' ) );
 		$parser->setHook( 'hgroup', array( 'HTML5Tags', 'tagHgroup' ) );

@@ -13,6 +13,8 @@ Add the following settings to your LocalSettings.php:
 require_once("$IP/extensions/HTML5Tags/HTML5Tags.php");
 
 ==Changelog==
+*0.2
+**Fixed aside that didn't work
 *0.1 First version
 
 == License ==
