@@ -15,7 +15,12 @@ require_once("$IP/extensions/HTML5Tags/HTML5Tags.php");
 ==Changelog==
 *0.2
 **Fixed aside that didn't work
+**Minor bugfixes
 *0.1 First version
+
+==Known limitations==
+*<section> will not work if the extension LabeledSectionTransclusion is installed
+*This extensions doesn't really allow any new tags in the MediaWiki parser. Instead, it adds so called tag functions, that produces the same html output. Most of the time the resulting code will be exactly the same, but there might be some special cases where the output is not what you would have expected. A more technical explanation: The contents of these tags will not be run through <code>Parser::preSaveTransform</code>, as <code>Parser::recursiveTagParse</code> skips that step.
 
 == License ==
 BSD 

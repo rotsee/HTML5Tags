@@ -56,7 +56,7 @@ class HTML5Tags {
 			}
 		}
 
-		if ( $selfclosing )
+		if ( $selfClosing )
 			$html .= '/';
 
 		$html .= '>';
