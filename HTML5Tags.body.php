@@ -24,6 +24,7 @@ class HTML5Tags {
 		$parser->setHook( 'time', array( 'HTML5Tags', 'tagTime' ) );
 		$parser->setHook( 'footer', array( 'HTML5Tags', 'tagFooter' ) );
 		$parser->setHook( 'header', array( 'HTML5Tags', 'tagHeader' ) );
+		$parser->setHook( 'aside', array( 'HTML5Tags', 'tagAside' ) );
 		return true;
 
 	}
