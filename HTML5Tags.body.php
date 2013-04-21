@@ -93,7 +93,7 @@ class HTML5Tags {
 	private function html ( $tag, $input, $args, $parser, $frame ) {
 		$args = self::extractGlobalAttributes( $args );
 		if ( !empty( $args ) ) {
-			foreach(  $args as &$k => &$v ) {
+			foreach(  $args as $k => &$v ) {
 				$k = htmlspecialchars( $k );
 				$v = htmlspecialchars( $parser->recursiveTagParse( $v, $frame ) );
 			}
