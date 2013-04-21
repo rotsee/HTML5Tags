@@ -60,7 +60,7 @@ class HTML5Tags {
 
 		$returnGlobalAttributes = array ();
 		foreach ( $args as $k => $v ) {
-			if ( in_array( $k, $allowedGlobalAttributes ) || strpos( $k, 'data-' ) ) {
+			if ( in_array( $k, $allowedGlobalAttributes ) || ( strpos( $k, 'data-' ) !== false ) ) {
 
 				$returnGlobalAttributes[$k] = $v;
 				unset ( $args[$k] );
