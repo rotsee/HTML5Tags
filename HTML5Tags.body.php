@@ -33,16 +33,40 @@ class HTML5Tags {
 	    removes them from args and returns them */
 	private function extractGlobalAttributes ( &$args ) {
 
-		$allowedGlobalAttributes = array ( 'accesskey', 'hidden', 'itemtype', 'class', 'id', 'lang', 'contenteditable', 'inert', 'spellcheck', 'contextmenu', 'itemid', 'style', 'dir', 'itemprop', 'tabindex', 'draggable', 'itemref', 'title', 'dropzone', 'itemscope', 'translate' );
+		$allowedGlobalAttributes = array ( 
+			'accesskey',
+			'hidden',
+			'itemtype',
+			'class',
+			'id',
+			'lang',
+			'contenteditable',
+			'inert',
+			'spellcheck',
+			'contextmenu',
+			'itemid',
+			'style',
+			'dir',
+			'itemprop',
+			'tabindex',
+			'draggable',
+			'itemref',
+			'title',
+			'dropzone',
+			'itemscope',
+			'translate',
+			'aria-hidden',
+		);
 
 		$returnGlobalAttributes = array ();
 		foreach ( $args as $k => $v ) {
-			if ( in_array( $k, $allowedGlobalAttributes ) ) {
+			if ( in_array( $k, $allowedGlobalAttributes ) || strpos( $k, 'data-' ) ) {
 
 				$returnGlobalAttributes[$k] = $v;
 				unset ( $args[$k] );
 
 			}
+			
 		}
 		return $returnGlobalAttributes;
 	}
