@@ -77,7 +77,7 @@ class HTML5Tags {
 		$html = "<$name";
 		if ( !empty( $args ) ) {
 			foreach(  $args as $k => $v ) {
-				$html .= ' '. htmlspecialchars( $k ).'="'. htmlspecialchars($v).'"';
+				$html .= " $k='$v'";
 			}
 		}
 
@@ -92,6 +92,12 @@ class HTML5Tags {
 	/* Shorthand function for the simplest possible tag function */
 	private function html ( $tag, $input, $args, $parser, $frame ) {
 		$args = self::extractGlobalAttributes( $args );
+		if ( !empty( $args ) ) {
+			foreach(  $args as &$k => &$v ) {
+				$k = htmlspecialchars( $k );
+				$v = htmlspecialchars( $parser->recursiveTagParse( $v, $frame ) );
+			}
+		}
 		$start = self::createOpeningTag( $tag, $args );
 		$input = $parser->recursiveTagParse ( $input, $frame ); //This does not run Parser::preSaveTransform
 		return "$start$input</$tag>";
