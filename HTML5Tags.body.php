@@ -12,6 +12,7 @@ class HTML5Tags {
 	public function setHooks ( $parser ) {
 		$parser->setHook( 'article', array( 'HTML5Tags', 'tagArticle' ) );
 		$parser->setHook( 'aside', array( 'HTML5Tags', 'tagAside' ) );
+		$parser->setHook( 'details', array( 'HTML5Tags', 'tagDetails' ) );
 		$parser->setHook( 'figure', array( 'HTML5Tags', 'tagFigure' ) );
 		$parser->setHook( 'figcaption', array( 'HTML5Tags', 'tagFigcaption' ) );
 		$parser->setHook( 'hgroup', array( 'HTML5Tags', 'tagHgroup' ) );
@@ -21,6 +22,7 @@ class HTML5Tags {
 		if ( !class_exists( 'LabeledSectionTransclusion' ) ) {
 			$parser->setHook( 'section', array( 'HTML5Tags', 'tagSection' ) );
 		}
+		$parser->setHook( 'summary', array( 'HTML5Tags', 'tagSummary' ) );
 		$parser->setHook( 'time', array( 'HTML5Tags', 'tagTime' ) );
 		$parser->setHook( 'footer', array( 'HTML5Tags', 'tagFooter' ) );
 		$parser->setHook( 'header', array( 'HTML5Tags', 'tagHeader' ) );
@@ -111,6 +113,10 @@ class HTML5Tags {
 		return self::html( 'aside', $input, $args, $parser, $frame);
 	}
 
+	public function tagDetails ( $input, $args, $parser, $frame ) {
+		return self::html( 'details', $input, $args, $parser, $frame);
+	}
+
 	public function tagFigcaption ( $input, $args, $parser, $frame ) {
 		return self::html( 'figcaption', $input, $args, $parser, $frame);
 	}
@@ -141,6 +147,10 @@ class HTML5Tags {
 
 	public function tagSection ( $input, $args, $parser, $frame ) {
 		return self::html( 'section', $input, $args, $parser, $frame);
+	}
+
+	public function tagSummary ( $input, $args, $parser, $frame ) {
+		return self::html( 'summary', $input, $args, $parser, $frame);
 	}
 
 	public function tagTime ( $input, $args, $parser, $frame ) {
