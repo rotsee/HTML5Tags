@@ -9,7 +9,7 @@ class HTML5Tags {
 
 	/* Sets all hooks on ParserFirstCallInit 
 	    TODO: Should probably check for each and everyone that they are not already set */
-	public function setHooks ( $parser ) {
+	public static function setHooks ( $parser ) {
 		$parser->setHook( 'article', array( 'HTML5Tags', 'tagArticle' ) );
 		$parser->setHook( 'aside', array( 'HTML5Tags', 'tagAside' ) );
 		$parser->setHook( 'details', array( 'HTML5Tags', 'tagDetails' ) );
@@ -33,7 +33,7 @@ class HTML5Tags {
 
 	/* This function takes all attributes that are allowed fot all HTML5 tags,
 	    removes them from args and returns them */
-	private function extractGlobalAttributes ( &$args ) {
+	private static function extractGlobalAttributes ( &$args ) {
 
 		$allowedGlobalAttributes = array ( 
 			'accesskey',
@@ -74,7 +74,7 @@ class HTML5Tags {
 	}
 
 	/* Create an opening tag with attributes */
-	private function createOpeningTag ( $name, $args, $selfClosing = false ) {
+	private static function createOpeningTag ( $name, $args, $selfClosing = false ) {
 
 		$html = "<$name";
 		if ( !empty( $args ) ) {
@@ -92,7 +92,7 @@ class HTML5Tags {
 	}
 
 	/* Shorthand function for the simplest possible tag function */
-	private function html ( $tag, $input, $args, $parser, $frame ) {
+	private static function html ( $tag, $input, $args, $parser, $frame ) {
 		$args = self::extractGlobalAttributes( $args );
 		if ( !empty( $args ) ) {
 			foreach(  $args as $k => &$v ) {
@@ -105,55 +105,55 @@ class HTML5Tags {
 		return "$start$input</$tag>";
 	}
 
-	public function tagArticle ( $input, $args, $parser, $frame ) {
+	public static function tagArticle ( $input, $args, $parser, $frame ) {
 		return self::html( 'article', $input, $args, $parser, $frame);
 	}
 
-	public function tagAside ( $input, $args, $parser, $frame ) {
+	public static function tagAside ( $input, $args, $parser, $frame ) {
 		return self::html( 'aside', $input, $args, $parser, $frame);
 	}
 
-	public function tagDetails ( $input, $args, $parser, $frame ) {
+	public static function tagDetails ( $input, $args, $parser, $frame ) {
 		return self::html( 'details', $input, $args, $parser, $frame);
 	}
 
-	public function tagFigcaption ( $input, $args, $parser, $frame ) {
+	public static function tagFigcaption ( $input, $args, $parser, $frame ) {
 		return self::html( 'figcaption', $input, $args, $parser, $frame);
 	}
 
-	public function tagFigure ( $input, $args, $parser, $frame ) {
+	public static function tagFigure ( $input, $args, $parser, $frame ) {
 		return self::html( 'figure', $input, $args, $parser, $frame);
 	}
 
-	public function tagFooter ( $input, $args, $parser, $frame ) {
+	public static function tagFooter ( $input, $args, $parser, $frame ) {
 		return self::html( 'footer', $input, $args, $parser, $frame);
 	}
 
-	public function tagHeader ( $input, $args, $parser, $frame ) {
+	public static function tagHeader ( $input, $args, $parser, $frame ) {
 		return self::html( 'header', $input, $args, $parser, $frame);
 	}
 
-	public function tagHgroup ( $input, $args, $parser, $frame ) {
+	public static function tagHgroup ( $input, $args, $parser, $frame ) {
 		return self::html( 'hgroup', $input, $args, $parser, $frame);
 	}
 
-	public function tagMark ( $input, $args, $parser, $frame ) {
+	public static function tagMark ( $input, $args, $parser, $frame ) {
 		return self::html( 'mark', $input, $args, $parser, $frame);
 	}
 
-	public function tagNav ( $input, $args, $parser, $frame ) {
+	public static function tagNav ( $input, $args, $parser, $frame ) {
 		return self::html( 'nav', $input, $args, $parser, $frame);
 	}
 
-	public function tagSection ( $input, $args, $parser, $frame ) {
+	public static function tagSection ( $input, $args, $parser, $frame ) {
 		return self::html( 'section', $input, $args, $parser, $frame);
 	}
 
-	public function tagSummary ( $input, $args, $parser, $frame ) {
+	public static function tagSummary ( $input, $args, $parser, $frame ) {
 		return self::html( 'summary', $input, $args, $parser, $frame);
 	}
 
-	public function tagTime ( $input, $args, $parser, $frame ) {
+	public static function tagTime ( $input, $args, $parser, $frame ) {
 
 		$finalArgs = self::extractGlobalAttributes( $args );
 		foreach ( $args as $k => $v ) {
