@@ -2,25 +2,28 @@ Allows a couple of HTML5 tags such as figure/figcaption in MediaWiki
 
 This is useful as long as https://bugzilla.wikimedia.org/show_bug.cgi?id=23932 is not resolved.
 
-==Release ==
-[https://github.com/rotsee/HTML5Tags/tags 0.1]
+== Latest release ==
+[https://github.com/rotsee/HTML5Tags/tags v0.3]
 
-==Dependencies==
+== Dependencies ==
 MediaWiki 1.18
 
-==Installation==
+== Installation ==
 Add the following settings to your LocalSettings.php:
 require_once("$IP/extensions/HTML5Tags/HTML5Tags.php");
 
-==Changelog==
-*0.2
-**Fixed aside that didn't work
-**Minor bugfixes
-*0.1 First version
+== Changelog ==
+* 0.3
+** PHP 7 support (removes warning messages)
+** Fix duplicated aside hook
+* 0.2
+** Fixed aside that didn't work
+** Minor bugfixes
+* 0.1 First version
 
-==Known limitations==
+== Known limitations ==
 *<section> will not work if the extension LabeledSectionTransclusion is installed
-*This extensions doesn't really allow any new tags in the MediaWiki parser. Instead, it adds so called tag functions, that produces the same html output. Most of the time the resulting code will be exactly the same, but there might be some special cases where the output is not what you would have expected. A more technical explanation: The contents of these tags will not be run through <code>Parser::preSaveTransform</code>, as <code>Parser::recursiveTagParse</code> skips that step.
+*This extension doesn't really allow any new tags in the MediaWiki parser. Instead, it adds so called tag functions, that produces the same html output. Most of the time the resulting code will be exactly the same, but there might be some special cases where the output is not what you would have expected. A more technical explanation: The contents of these tags will not be run through <code>Parser::preSaveTransform</code>, as <code>Parser::recursiveTagParse</code> skips that step.
 
 == License ==
 BSD 
