@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 if ( version_compare( $wgVersion, '1.18', '<' ) ) {
-	die( '<b>Error:</b> This version of Semantic Result Formats requires MediaWiki 1.18 or above.' );
+	die( '<b>Error:</b> This version of HTML5Tags requires MediaWiki 1.18 or above.' );
 }
 
 define( 'HTML5TAGS_VERSION', '0.1' );
